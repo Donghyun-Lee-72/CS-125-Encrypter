@@ -1,35 +1,35 @@
 package com.example.cs125app;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+
+public class ResultActivity extends AppCompatActivity {
 
     protected void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        Button encrypt = findViewById(R.id.encrypt);
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.encrypted);
 
         Button back = findViewById(R.id.back);
-        encrypt.setOnClickListener(goBackHome());
+        back.setOnClickListener(unused -> goBackHome());
 
         Button copy = findViewById(R.id.copy);
 
-        TextView result = (TextView) findViewById(R.id.result);
+        TextView result = findViewById(R.id.result);
         String resultAsString = result.getText().toString();
 
-        encrypt.setOnClickListener(copyText(resultAsString));
+        copy.setOnClickListener(unused -> copyText(resultAsString));
     }
 
     private void goBackHome() {
         //turn to home and wait for a new input
-        Intent intent = new Intent(this, ResultActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
     }
 
     private void copyText(String output) {
@@ -37,4 +37,3 @@ public class MainActivity extends AppCompatActivity {
         //notification (alert dialogue) indicating that the results are copied to the clipboard.
     }
 }
-

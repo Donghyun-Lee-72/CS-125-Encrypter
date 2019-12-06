@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">cs125app</string>
+    <string name="key">Key code</string>
+    <string name="input">Text</string>
+    <string name="output">Text</string>
+</resources>

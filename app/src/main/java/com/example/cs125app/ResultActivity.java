@@ -17,14 +17,22 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.encrypted);
 
         Button back = findViewById(R.id.back);
-        back.setOnClickListener(unused -> goBackHome());
-
-        Button copy = findViewById(R.id.copy);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ResultActivity.this, MainActivity.class));
+            }
+        });
 
         TextView result = findViewById(R.id.result);
-        String resultAsString = result.getText().toString();
+        final String resultAsString = result.getText().toString();
 
-        copy.setOnClickListener(unused -> copyText(resultAsString));
+        Button copy = findViewById(R.id.copy);
+        copy.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ResultActivity.this, MainActivity.class));
+                copyText(resultAsString);
+            }
+        });
     }
 
     private void goBackHome() {

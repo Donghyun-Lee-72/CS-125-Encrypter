@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Geoff" >
+    android:background="@drawable/geoffbackground" >
 
     <Space
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/input"
+            android:id="@+id/inputLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/input"
@@ -99,7 +99,6 @@
             android:layout_weight="10"
             android:background="@color/white"
             android:inputType="text"
-            android:text="Target Text"
             android:textSize="8.5pt" />
 
         <Space

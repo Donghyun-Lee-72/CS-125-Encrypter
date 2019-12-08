@@ -8,7 +8,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="205dp"
+        android:layout_height="150dp"
         android:layout_weight="0" />
 
     <LinearLayout
@@ -37,37 +37,38 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="35dp"
         android:layout_weight="0" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="8" >
+        android:layout_weight="6" >
 
         <Space
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/result"
             android:layout_width="0dp"
-            android:layout_height="480dp"
-            android:layout_weight="10"
+            android:layout_height="320dp"
+            android:layout_weight="1"
             android:background="@color/white"
             android:inputType="text"
             android:text="result"
             android:textSize="8.5pt" />
 
         <Space
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_weight="0.7" >
 
         <Space
             android:layout_width="0dp"

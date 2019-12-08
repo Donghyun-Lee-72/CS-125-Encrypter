@@ -14,7 +14,7 @@ public class ResultActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.encrypted);
+        setContentView(R.layout.encryption);
 
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {

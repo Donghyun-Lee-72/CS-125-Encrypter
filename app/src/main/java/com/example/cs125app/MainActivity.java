@@ -15,30 +15,30 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.home);
 
-        //Text input to encrypt or Encrypted input to decrypt
-        TextView inputBox = findViewById(R.id.text);
-        final String textInput = inputBox.getText().toString();
-
-        //key used for decryption/encryption
-        TextView key = findViewById(R.id.number);
-        String keyAsString = key.getText().toString();
-        final int keyAsInt = Integer.parseInt(keyAsString);
-
-        Button encrypt = findViewById(R.id.encrypt);
-        encrypt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ResultActivity.class));
-                encryptText(textInput, keyAsInt);
-            }
-        });
-
-        Button decrypt = findViewById(R.id.decrypt);
-        decrypt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ResultActivity.class));
-                decryptText(textInput, keyAsInt);
-            }
-        });
+//        //Text input to encrypt or Encrypted input to decrypt
+//        TextView inputBox = findViewById(R.id.text);
+//        final String textInput = inputBox.getText().toString();
+//
+//        //key used for decryption/encryption
+//        TextView key = findViewById(R.id.number);
+//        String keyAsString = key.getText().toString();
+//        final int keyAsInt = Integer.parseInt(keyAsString);
+//
+//        Button encrypt = findViewById(R.id.encrypt);
+//        encrypt.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, ResultActivity.class));
+//                encryptText(textInput, keyAsInt);
+//            }
+//        });
+//
+//        Button decrypt = findViewById(R.id.decrypt);
+//        decrypt.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, ResultActivity.class));
+//                decryptText(textInput, keyAsInt);
+//            }
+//        });
 
     }
 

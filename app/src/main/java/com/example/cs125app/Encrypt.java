@@ -16,21 +16,16 @@ public class Encrypt extends AppCompatActivity {
 
         setContentView(R.layout.encrypter);
 
-        Button back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
+        TextView keyNumber = findViewById(R.id.number);
+        String keyAsString = keyNumber.getText().toString();
+        int keyAsInt = Integer.parseInt(keyAsString);
+
+
+        Button encrypt = findViewById(R.id.encrypt);
+
+        encrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(Encrypt.this, MainActivity.class));
-            }
-        });
-
-        TextView result = findViewById(R.id.result);
-        final String resultAsString = result.getText().toString();
-
-        Button copy = findViewById(R.id.share);
-        copy.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Encrypt.this, MainActivity.class));
-                copyText(resultAsString);
             }
         });
     }

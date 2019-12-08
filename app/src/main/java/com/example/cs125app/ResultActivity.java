@@ -35,10 +35,10 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    private void goBackHome() {
-        //turn to home and wait for a new input
-        Intent intent = new Intent(this, MainActivity.class);
-    }
+//    private void goBackHome() {
+//        //turn to home and wait for a new input
+//        Intent intent = new Intent(this, MainActivity.class);
+//    }
 
     private void copyText(String output) {
         //copy the result on the clipboard.

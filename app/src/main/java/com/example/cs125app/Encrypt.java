@@ -25,7 +25,7 @@ public class Encrypt extends AppCompatActivity {
 
         encrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Encrypt.this, MainActivity.class));
+                startActivity(new Intent(Encrypt.this, ResultPage.class));
             }
         });
     }

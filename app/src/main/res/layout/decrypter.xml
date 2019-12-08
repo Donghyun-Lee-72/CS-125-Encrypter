@@ -51,7 +51,8 @@
             android:background="@color/white"
             android:inputType="number"
             android:text="Code"
-            android:textSize="12pt" />
+            android:textSize="12pt"
+            android:maxLength="4" />
 
         <Space
             android:layout_width="0dp"

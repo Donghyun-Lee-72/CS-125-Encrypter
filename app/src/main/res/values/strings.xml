@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">cs125app</string>
     <string name="key">Key code</string>
-    <string name="input">Text</string>
-    <string name="output">Text</string>
+    <string name="input">input</string>
+    <string name="output">output</string>
+    <string name="warning">ONLY use English letters, Arabic numbers, and punctuation like: comma, exclamation point, question mark, and dot. </string>
 </resources>

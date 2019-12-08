@@ -47,7 +47,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Encryption mode" />
+            android:text="Encryption mode"
+            android:onClick="onClick"/>
 
         <Space
             android:layout_width="0dp"
@@ -75,7 +76,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="decryption Mode" />
+            android:text="decryption Mode"
+            android:onClick="onClick"/>
 
         <Space
             android:layout_width="0dp"

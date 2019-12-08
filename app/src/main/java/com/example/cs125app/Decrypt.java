@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Decrypt extends AppCompatActivity {
+    private Button decrypt;
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -19,7 +20,7 @@ public class Decrypt extends AppCompatActivity {
         int keyAsInt = Integer.parseInt(keyAsString);
 
 
-        Button decrypt = findViewById(R.id.encrypt);
+        decrypt = findViewById(R.id.encrypt);
 
         decrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

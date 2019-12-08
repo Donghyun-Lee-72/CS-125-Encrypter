@@ -14,7 +14,7 @@ public class ResultActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.encryption);
+        setContentView(R.layout.encrypter);
 
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -26,7 +26,7 @@ public class ResultActivity extends AppCompatActivity {
         TextView result = findViewById(R.id.result);
         final String resultAsString = result.getText().toString();
 
-        Button copy = findViewById(R.id.copy);
+        Button copy = findViewById(R.id.share);
         copy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));

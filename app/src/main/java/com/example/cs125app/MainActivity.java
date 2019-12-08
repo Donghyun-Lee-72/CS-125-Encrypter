@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //initial GUI interface is the home
         setContentView(R.layout.home);
 
 //        //Text input to encrypt or Encrypted input to decrypt

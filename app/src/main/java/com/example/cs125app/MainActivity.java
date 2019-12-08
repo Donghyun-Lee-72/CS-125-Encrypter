@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         //initial GUI interface is the home
         setContentView(R.layout.home);
 
-//        //Text input to encrypt or Encrypted input to decrypt
+//        Text input to encrypt or Encrypted input to decrypt
 //        TextView inputBox = findViewById(R.id.text);
 //        final String textInput = inputBox.getText().toString();
 //
@@ -22,22 +24,20 @@ public class MainActivity extends AppCompatActivity {
 //        String keyAsString = key.getText().toString();
 //        final int keyAsInt = Integer.parseInt(keyAsString);
 //
-//        Button encrypt = findViewById(R.id.encrypt);
-//        encrypt.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, Encrypt.class));
-//                encryptText(textInput, keyAsInt);
-//            }
-//        });
-//
-//        Button decrypt = findViewById(R.id.decrypt);
-//        decrypt.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, Encrypt.class));
-//                decryptText(textInput, keyAsInt);
-//            }
-//        });
+        Button encryptionMode = findViewById(R.id.encryptionMode);
+        encryptionMode.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Encrypt.class));
+            }
+        });
 
+
+        Button decryptionMode = findViewById(R.id.decryptionMode);
+        decryptionMode.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Decrypt.class));
+            }
+        });
     }
 
     private void startEncrypt() {

@@ -24,7 +24,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Title" />
+        app:srcCompat="@drawable/title" />
 
     <Space
         android:layout_width="match_parent"

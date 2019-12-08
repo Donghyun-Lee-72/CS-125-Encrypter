@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class ResultActivity extends AppCompatActivity {
+public class Encrypt extends AppCompatActivity {
 
     protected void onCreate(final Bundle savedInstanceState) {
 
@@ -19,7 +19,7 @@ public class ResultActivity extends AppCompatActivity {
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ResultActivity.this, MainActivity.class));
+                startActivity(new Intent(Encrypt.this, MainActivity.class));
             }
         });
 
@@ -29,7 +29,7 @@ public class ResultActivity extends AppCompatActivity {
         Button copy = findViewById(R.id.share);
         copy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ResultActivity.this, MainActivity.class));
+                startActivity(new Intent(Encrypt.this, MainActivity.class));
                 copyText(resultAsString);
             }
         });

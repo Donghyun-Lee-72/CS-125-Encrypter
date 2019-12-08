@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 //        Button encrypt = findViewById(R.id.encrypt);
 //        encrypt.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ResultActivity.class));
+//                startActivity(new Intent(MainActivity.this, Encrypt.class));
 //                encryptText(textInput, keyAsInt);
 //            }
 //        });
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //        Button decrypt = findViewById(R.id.decrypt);
 //        decrypt.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ResultActivity.class));
+//                startActivity(new Intent(MainActivity.this, Encrypt.class));
 //                decryptText(textInput, keyAsInt);
 //            }
 //        });
@@ -45,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startEncrypt() {
         //turn to the results page and show the result
-        Intent intent = new Intent(this, ResultActivity.class);
+        Intent intent = new Intent(this, Encrypt.class);
         //make an intent of the other resultActivity
 
     }
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void startDecrypt() {
         //turn to the results page and show the result
-        Intent intent = new Intent(this, ResultActivity.class);
+        Intent intent = new Intent(this, Encrypt.class);
         //make an intent of the other resultActivity
 
     }

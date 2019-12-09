@@ -19,28 +19,69 @@ public class Decrypt extends AppCompatActivity {
 
         Button smallDecrypt = findViewById(R.id.smallDecrypt);
         Button safeDecrypt = findViewById(R.id.safeDecrypt);
+        final EditText keyInput = findViewById(R.id.decryptNumber);
+        final EditText decryptInput = findViewById(R.id.decryptInput);
 
         smallDecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get key and text
-
+                int key = Integer.parseInt(keyInput.getText().toString());
+                String[] input = decryptInput.getText().toString().toLowerCase().split("");
                 // decrypt it using decrypt();
+                Map keyMap = decrypter(key);
+                String result = "";
 
-                startActivity(new Intent(Decrypt.this, ResultPage.class));
+                for (String letter : input) {
+                    String value = (String) keyMap.get(letter);
+                    if (value == null) {
+                        // send warning.
+                    }
+
+                    result += value;
+                }
+
+                Intent intent = new Intent(Decrypt.this, ResultPage.class);
+                intent.putExtra("result", result);
+                intent.putExtra("mode", "decryption");
+
+                startActivity(intent);
             }
         });
 
         safeDecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Decrypt.this, ResultPage.class));
+                // get key and text
+                int key = Integer.parseInt(keyInput.getText().toString());
+                String[] input = decryptInput.getText().toString().toLowerCase().split("");
+                // decrypt it using decrypt();
+                Map keyMap = decrypter(key);
+                String result = "";
+
+                for (int o = 0; o < input.length; o += 2) {
+                    String value = (String) keyMap.get(input[o] + input[o + 1]);
+                    if (value == null) {
+                        // send warning.
+                    }
+
+                    result += value;
+                }
+
+                Intent intent = new Intent(Decrypt.this, ResultPage.class);
+                intent.putExtra("result", result);
+                intent.putExtra("mode", "advancedDecryption");
+
+                startActivity(intent);
             }
         });
     }
 
-    protected Map decrypter(int key, String[] charList, String[] numList, String[] puncList) {
+    protected Map decrypter(int key) {
         Map result = new HashMap();
+        String[] charList = Arrays.charList;
+        String[] numList = Arrays.numList;
+        String[] puncList = Arrays.puncList;
         // english letter mapping
         for (int j = 0; j < 26; j++) {
             result.put(charList[(key + j) % charList.length], charList[j]);
@@ -57,8 +98,11 @@ public class Decrypt extends AppCompatActivity {
         return result;
     }
 
-    protected Map decrypter(int key, int subkey, String[] charList, String[] numList, String[] puncList) {
+    protected Map decrypter(int key, int subkey) {
         Map result = new HashMap();
+        String[] charList = Arrays.charList;
+        String[] numList = Arrays.numList;
+        String[] puncList = Arrays.puncList;
 
         // english letter mapping
         for (int j = 0; j < 26; j++) {

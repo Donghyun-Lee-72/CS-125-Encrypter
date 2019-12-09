@@ -19,7 +19,7 @@ public class Encrypt extends AppCompatActivity {
 
         Button smallEncrypt = findViewById(R.id.smallEncrypt);
         Button safeEncrypt = findViewById(R.id.safeEncrypt);
-        final EditText keyInput = findViewById(R.id.encryptInput);
+        final EditText keyInput = findViewById(R.id.encryptNumber);
         final EditText encryptInput = findViewById(R.id.encryptInput);
 
         smallEncrypt.setOnClickListener(new View.OnClickListener() {

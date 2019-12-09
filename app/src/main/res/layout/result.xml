@@ -113,9 +113,11 @@
             android:layout_height="320dp"
             android:layout_weight="1"
             android:background="@color/white"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:text="result"
-            android:textSize="8.5pt" />
+            android:textSize="8.5pt"
+            android:gravity="top|left"
+            />
 
         <Space
             android:layout_width="30dp"

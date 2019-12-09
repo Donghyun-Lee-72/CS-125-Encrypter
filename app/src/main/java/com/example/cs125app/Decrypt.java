@@ -20,7 +20,7 @@ public class Decrypt extends AppCompatActivity {
         int keyAsInt = Integer.parseInt(keyAsString);
 
 
-        decrypt = findViewById(R.id.encrypt);
+        decrypt = findViewById(R.id.smallEncrypt);
 
         decrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

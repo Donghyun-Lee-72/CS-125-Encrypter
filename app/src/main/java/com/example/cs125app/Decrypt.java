@@ -29,6 +29,11 @@ public class Decrypt extends AppCompatActivity {
             public void onClick(View v) {
                 // get key and text
                 int key = Integer.parseInt(keyInput.getText().toString());
+
+                if (keyInput.getText().toString().length() != 4 || key < 0) {
+                    WarningEnd(1);
+                }
+
                 String[] input = decryptInput.getText().toString().toLowerCase().split("");
                 // decrypt it using decrypt();
                 Map keyMap = decrypter(key);
@@ -36,18 +41,8 @@ public class Decrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null || keyInput.getText().toString().length() != 4) {
-                        finish();
-                        new AlertDialog.Builder(Decrypt.this)
-                                .setTitle("WARNING!")
-                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent goHome = new Intent(Decrypt.this, MainActivity.class);
-                                        startActivity(goHome);
-                                    }
-                                });
+                    if (value == null) {
+                        WarningEnd(0);
                     }
 
                     result += value;
@@ -58,8 +53,8 @@ public class Decrypt extends AppCompatActivity {
                 intent.putExtra("mode", "decryption");
                 intent.putExtra("key", key);
 
-                finish();
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -67,9 +62,13 @@ public class Decrypt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // get key and text
-                int keyOne = Integer.parseInt(keyInput.getText().toString()) / 100;
-                int keyTwo = Integer.parseInt(keyInput.getText().toString()) % 100;
                 int key = Integer.parseInt(keyInput.getText().toString());
+                int keyOne = key / 100;
+                int keyTwo = key % 100;
+
+                if (keyInput.getText().toString().length() != 4 || key < 0) {
+                    WarningEnd(1);
+                }
 
                 String[] input = decryptInput.getText().toString().toLowerCase().split("");
                 // decrypt it using decrypt();
@@ -78,18 +77,8 @@ public class Decrypt extends AppCompatActivity {
 
                 for (int o = 0; o < input.length; o += 2) {
                     String value = (String) keyMap.get(input[o] + input[o + 1]);
-                    if (value == null || keyInput.getText().toString().length() != 4) {
-                        finish();
-                        new AlertDialog.Builder(Decrypt.this)
-                                .setTitle("WARNING!")
-                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent goHome = new Intent(Decrypt.this, MainActivity.class);
-                                        startActivity(goHome);
-                                    }
-                                });
+                    if (value == null) {
+                        WarningEnd(0);
                     }
 
                     result += value;
@@ -100,13 +89,13 @@ public class Decrypt extends AppCompatActivity {
                 intent.putExtra("mode", "advancedDecryption");
                 intent.putExtra("key", key);
 
-                finish();
                 startActivity(intent);
+                finish();
             }
         });
     }
 
-    protected Map decrypter(int key) {
+    private Map decrypter(int key) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
         String[] numList = Arrays.numList;
@@ -127,7 +116,7 @@ public class Decrypt extends AppCompatActivity {
         return result;
     }
 
-    protected Map decrypter(int key, int subkey) {
+    private Map decrypter(int key, int subkey) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
         String[] numList = Arrays.numList;
@@ -147,5 +136,33 @@ public class Decrypt extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    private void WarningEnd(int type) {
+        if (type == 0) {
+            new AlertDialog.Builder(Decrypt.this)
+                    .setTitle("WARNING!")
+                    .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                            startActivity(goHome);
+                            finish();
+                        }
+                    });
+        } else if (type == 1) {
+            new AlertDialog.Builder(Decrypt.this)
+                    .setTitle("WARNING!")
+                    .setMessage("You should use 4-digit positive number")
+                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                            startActivity(goHome);
+                            finish();
+                        }
+                    });
+        }
     }
 }

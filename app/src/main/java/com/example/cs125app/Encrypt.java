@@ -28,8 +28,13 @@ public class Encrypt extends AppCompatActivity {
         smallEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get key and text
                 int key = Integer.parseInt(keyInput.getText().toString());
+
+                if (keyInput.getText().toString().length() != 4 || key < 0) {
+                    WarningEnd(1);
+                }
+
+                // get key and text
                 String[] input = encryptInput.getText().toString().toLowerCase().split("");
                 // encrypte it using encrypter();
                 Map keyMap = encrypter(key);
@@ -37,18 +42,8 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null || keyInput.getText().toString().length() != 4) {
-                        finish();
-                        new AlertDialog.Builder(Encrypt.this)
-                                .setTitle("WARNING!")
-                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                                        startActivity(goHome);
-                                    }
-                                });
+                    if (value == null) {
+                        WarningEnd(0);
                     }
 
                     result += value;
@@ -59,19 +54,22 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("mode", "encryption");
                 intent.putExtra("key", key);
 
-                finish();
                 startActivity(intent);
+                finish();
             }
         });
 
         safeEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get key and text
-                    // send error if number is not 4-digit
                 int key = Integer.parseInt(keyInput.getText().toString());
-                int keyOne = Integer.parseInt(keyInput.getText().toString()) / 100;
-                int keyTwo = Integer.parseInt(keyInput.getText().toString()) % 100;
+                int keyOne = key / 100;
+                int keyTwo = key % 100;
+
+                if (keyInput.getText().toString().length() != 4 || key < 0) {
+                    WarningEnd(1);
+                }
+
                 String[] input = encryptInput.getText().toString().toLowerCase().split("");
                 // encrypte it using encrypter();
                 Map keyMap = encrypter(keyOne, keyTwo);
@@ -79,18 +77,8 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null || keyInput.getText().toString().length() != 4) {
-                        finish();
-                        new AlertDialog.Builder(Encrypt.this)
-                                .setTitle("WARNING!")
-                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                                        startActivity(goHome);
-                                    }
-                                });
+                    if (value == null) {
+                        WarningEnd(0);
                     }
 
                     result += value;
@@ -101,13 +89,13 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("mode", "advancedEncryption");
                 intent.putExtra("key", key);
 
-                finish();
                 startActivity(intent);
+                finish();
             }
         });
     }
 
-    protected Map encrypter(int key) {
+    private Map encrypter(int key) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
         String[] numList = Arrays.numList;
@@ -129,7 +117,7 @@ public class Encrypt extends AppCompatActivity {
         return result;
     }
 
-    protected Map encrypter(int key, int subkey) {
+    private Map encrypter(int key, int subkey) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
         String[] numList = Arrays.numList;
@@ -149,5 +137,33 @@ public class Encrypt extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    private void WarningEnd(int type) {
+        if (type == 0) {
+            new AlertDialog.Builder(Encrypt.this)
+                    .setTitle("WARNING!")
+                    .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                            startActivity(goHome);
+                            finish();
+                        }
+                    });
+        } else if (type == 1) {
+            new AlertDialog.Builder(Encrypt.this)
+                    .setTitle("WARNING!")
+                    .setMessage("You should use 4-digit positive number")
+                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                            startActivity(goHome);
+                            finish();
+                        }
+                    });
+        }
     }
 }

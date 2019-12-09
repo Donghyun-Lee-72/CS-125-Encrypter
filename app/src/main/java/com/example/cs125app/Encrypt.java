@@ -11,9 +11,7 @@ import android.widget.TextView;
 public class Encrypt extends AppCompatActivity {
 
     protected void onCreate(final Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.encrypter);
 //
 //        TextView keyNumber = findViewById(R.id.number);
@@ -29,11 +27,6 @@ public class Encrypt extends AppCompatActivity {
             }
         });
     }
-
-//    private void goBackHome() {
-//        //turn to home and wait for a new input
-//        Intent intent = new Intent(this, MainActivity.class);
-//    }
 
     private void copyText(String output) {
         //copy the result on the clipboard.

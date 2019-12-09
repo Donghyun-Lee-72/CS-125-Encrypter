@@ -44,6 +44,7 @@ public class Encrypt extends AppCompatActivity {
                 Intent intent = new Intent(Encrypt.this, ResultPage.class);
                 intent.putExtra("result", result);
                 intent.putExtra("mode", "encryption");
+                intent.putExtra("key", key);
 
                 startActivity(intent);
             }
@@ -54,6 +55,7 @@ public class Encrypt extends AppCompatActivity {
             public void onClick(View v) {
                 // get key and text
                     // send error if number is not 4-digit
+                int key = Integer.parseInt(keyInput.getText().toString());
                 int keyOne = Integer.parseInt(keyInput.getText().toString()) / 100;
                 int keyTwo = Integer.parseInt(keyInput.getText().toString()) % 100;
                 String[] input = encryptInput.getText().toString().toLowerCase().split("");
@@ -73,6 +75,7 @@ public class Encrypt extends AppCompatActivity {
                 Intent intent = new Intent(Encrypt.this, ResultPage.class);
                 intent.putExtra("result", result);
                 intent.putExtra("mode", "advancedEncryption");
+                intent.putExtra("key", key);
 
                 startActivity(intent);
             }

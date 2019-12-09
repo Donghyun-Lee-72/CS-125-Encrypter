@@ -46,11 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="12pt"
-            android:inputType="number"
-            android:text="Code"
             android:background="@color/white"
-            android:maxLength="4" />
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="12pt" />
 
         <Space
             android:layout_width="0dp"

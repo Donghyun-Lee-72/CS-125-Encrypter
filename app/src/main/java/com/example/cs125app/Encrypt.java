@@ -1,6 +1,9 @@
 package com.example.cs125app;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -34,8 +37,18 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        // send warning.
+                    if (value == null || keyInput.getText().toString().length() != 4) {
+                        finish();
+                        new AlertDialog.Builder(Encrypt.this)
+                                .setTitle("WARNING!")
+                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                                        startActivity(goHome);
+                                    }
+                                });
                     }
 
                     result += value;
@@ -46,6 +59,7 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("mode", "encryption");
                 intent.putExtra("key", key);
 
+                finish();
                 startActivity(intent);
             }
         });
@@ -65,8 +79,18 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        // send warning.
+                    if (value == null || keyInput.getText().toString().length() != 4) {
+                        finish();
+                        new AlertDialog.Builder(Encrypt.this)
+                                .setTitle("WARNING!")
+                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                                        startActivity(goHome);
+                                    }
+                                });
                     }
 
                     result += value;
@@ -77,6 +101,7 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("mode", "advancedEncryption");
                 intent.putExtra("key", key);
 
+                finish();
                 startActivity(intent);
             }
         });

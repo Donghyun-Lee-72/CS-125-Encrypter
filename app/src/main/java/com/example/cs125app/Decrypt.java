@@ -1,5 +1,6 @@
 package com.example.cs125app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
@@ -34,8 +36,18 @@ public class Decrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        // send warning.
+                    if (value == null || keyInput.getText().toString().length() != 4) {
+                        finish();
+                        new AlertDialog.Builder(Decrypt.this)
+                                .setTitle("WARNING!")
+                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                                        startActivity(goHome);
+                                    }
+                                });
                     }
 
                     result += value;
@@ -46,6 +58,7 @@ public class Decrypt extends AppCompatActivity {
                 intent.putExtra("mode", "decryption");
                 intent.putExtra("key", key);
 
+                finish();
                 startActivity(intent);
             }
         });
@@ -65,8 +78,18 @@ public class Decrypt extends AppCompatActivity {
 
                 for (int o = 0; o < input.length; o += 2) {
                     String value = (String) keyMap.get(input[o] + input[o + 1]);
-                    if (value == null) {
-                        // send warning.
+                    if (value == null || keyInput.getText().toString().length() != 4) {
+                        finish();
+                        new AlertDialog.Builder(Decrypt.this)
+                                .setTitle("WARNING!")
+                                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                                        startActivity(goHome);
+                                    }
+                                });
                     }
 
                     result += value;
@@ -77,6 +100,7 @@ public class Decrypt extends AppCompatActivity {
                 intent.putExtra("mode", "advancedDecryption");
                 intent.putExtra("key", key);
 
+                finish();
                 startActivity(intent);
             }
         });

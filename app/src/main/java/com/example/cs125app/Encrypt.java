@@ -15,8 +15,8 @@ public class Encrypt extends AppCompatActivity {
         setContentView(R.layout.encrypter);
 
         TextView keyNumber = findViewById(R.id.number);
-        String keyAsString = keyNumber.getText().toString();
-        int keyAsInt = Integer.parseInt(keyAsString);
+//        String keyAsString = keyNumber.getText().toString();
+//        int keyAsInt = Integer.parseInt(keyAsString);
 
 
         Button encrypt = findViewById(R.id.smallEncrypt);
@@ -28,8 +28,8 @@ public class Encrypt extends AppCompatActivity {
         });
     }
 
-    private void copyText(String output) {
-        //copy the result on the clipboard.
-        //notification (alert dialogue) indicating that the results are copied to the clipboard.
-    }
+//    private void copyText(String output) {
+//        //copy the result on the clipboard.
+//        //notification (alert dialogue) indicating that the results are copied to the clipboard.
+//    }
 }

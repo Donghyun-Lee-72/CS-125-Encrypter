@@ -53,10 +53,11 @@ public class Decrypt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // get key and text
-                int key = Integer.parseInt(keyInput.getText().toString());
+                int keyOne = Integer.parseInt(keyInput.getText().toString()) / 100;
+                int keyTwo = Integer.parseInt(keyInput.getText().toString()) % 100;
                 String[] input = decryptInput.getText().toString().toLowerCase().split("");
                 // decrypt it using decrypt();
-                Map keyMap = decrypter(key);
+                Map keyMap = decrypter(keyOne, keyTwo);
                 String result = "";
 
                 for (int o = 0; o < input.length; o += 2) {

@@ -25,6 +25,7 @@ public class ResultPage extends AppCompatActivity {
 //
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResultPage.this, MainActivity.class));
             }
@@ -32,6 +33,7 @@ public class ResultPage extends AppCompatActivity {
 
 
         Button share = findViewById(R.id.share);
+
         share.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

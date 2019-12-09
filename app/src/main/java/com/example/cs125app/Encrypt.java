@@ -20,8 +20,8 @@ public class Encrypt extends AppCompatActivity {
 
 
         Button encrypt = findViewById(R.id.smallEncrypt);
-
         encrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(Encrypt.this, ResultPage.class));
             }

@@ -23,6 +23,7 @@ public class Decrypt extends AppCompatActivity {
         decrypt = findViewById(R.id.smallEncrypt);
 
         decrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(Decrypt.this, MainActivity.class));
             }

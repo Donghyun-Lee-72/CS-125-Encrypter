@@ -19,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
         Button decryptionMode = findViewById(R.id.decryptionMode);
 
         encryptionMode.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Encrypt.class));
             }
         });
 
         decryptionMode.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Decrypt.class));
             }

@@ -103,7 +103,9 @@
             android:background="@color/white"
             android:inputType="text"
             android:maxLength="560"
-            android:textSize="8.5pt" />
+            android:textSize="8.5pt"
+            android:gravity="top|left"
+            />
 
         <Space
             android:layout_width="40dp"

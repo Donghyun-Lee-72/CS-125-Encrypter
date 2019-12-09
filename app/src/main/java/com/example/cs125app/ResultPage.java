@@ -19,8 +19,8 @@ public class ResultPage extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 startActivity(new Intent(ResultPage.this, MainActivity.class));
+                finish();
             }
         });
 

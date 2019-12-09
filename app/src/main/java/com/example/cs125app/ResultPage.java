@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ResultPage extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //initial GUI interface is the home
+        //The result page
         setContentView(R.layout.result);
 
 //        Text input to encrypt or Encrypted input to decrypt
@@ -25,6 +24,7 @@ public class ResultPage extends AppCompatActivity {
 //
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(ResultPage.this, MainActivity.class));
             }
@@ -32,6 +32,9 @@ public class ResultPage extends AppCompatActivity {
 
 
         Button share = findViewById(R.id.share);
+
+        //share button code source from https://stackoverflow.com/questions/17167701/how-to-activate-share-button-in-android-app
+
         share.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

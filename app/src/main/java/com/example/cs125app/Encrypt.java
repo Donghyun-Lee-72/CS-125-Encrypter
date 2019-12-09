@@ -13,23 +13,32 @@ public class Encrypt extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.encrypter);
-
-        TextView keyNumber = findViewById(R.id.number);
+//
+//        TextView keyNumber = findViewById(R.id.number);
 //        String keyAsString = keyNumber.getText().toString();
 //        int keyAsInt = Integer.parseInt(keyAsString);
 
 
-        Button encrypt = findViewById(R.id.smallEncrypt);
+        Button smallEncrypt = findViewById(R.id.smallEncrypt);
+        Button safeEncrypt = findViewById(R.id.safeEncrypt);
 
-        encrypt.setOnClickListener(new View.OnClickListener() {
+        smallEncrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Encrypt.this, ResultPage.class));
+            }
+        });
+
+        safeEncrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(Encrypt.this, ResultPage.class));
             }
         });
     }
 
-//    private void copyText(String output) {
-//        //copy the result on the clipboard.
-//        //notification (alert dialogue) indicating that the results are copied to the clipboard.
-//    }
+    private void copyText(String output) {
+        //copy the result on the clipboard.
+        //notification (alert dialogue) indicating that the results are copied to the clipboard.
+    }
 }

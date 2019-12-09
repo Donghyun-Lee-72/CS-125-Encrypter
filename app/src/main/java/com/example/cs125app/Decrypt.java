@@ -14,19 +14,31 @@ public class Decrypt extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.decrypter);
+//
+//        TextView keyNumber = findViewById(R.id.number);
+//        String keyAsString = keyNumber.getText().toString();
+//        int keyAsInt = Integer.parseInt(keyAsString);
 
-        TextView keyNumber = findViewById(R.id.number);
-        String keyAsString = keyNumber.getText().toString();
-        int keyAsInt = Integer.parseInt(keyAsString);
 
 
-        decrypt = findViewById(R.id.smallEncrypt);
+        Button smallDecrypt = findViewById(R.id.smallDecrypt);
+        Button safeDecrypt = findViewById(R.id.safeDecrypt);
 
-        decrypt.setOnClickListener(new View.OnClickListener() {
+        smallDecrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                startActivity(new Intent(Decrypt.this, MainActivity.class));
+                startActivity(new Intent(Decrypt.this, ResultPage.class));
+            }
+        });
+
+        safeDecrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Decrypt.this, ResultPage.class));
             }
         });
     }
-
+//    public String smallDecrypt(String input) {
+//
+//    }
 }

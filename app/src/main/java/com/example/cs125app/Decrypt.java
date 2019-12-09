@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,6 @@ public class Decrypt extends AppCompatActivity {
 
         Button smallDecrypt = findViewById(R.id.smallDecrypt);
         Button safeDecrypt = findViewById(R.id.safeDecrypt);
-
-
 
         smallDecrypt.setOnClickListener(new View.OnClickListener() {
             @Override

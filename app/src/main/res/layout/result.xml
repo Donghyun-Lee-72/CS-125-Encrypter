@@ -56,7 +56,6 @@
             android:layout_weight="5"
             android:text="Used Key"
             android:background="@color/white"
-            android:textColor="@color/white"
             android:textSize="22dp" />
 
         <Space

@@ -21,7 +21,7 @@ public class Encrypt extends AppCompatActivity {
         int keyAsInt = Integer.parseInt(keyAsString);
 
 
-        Button encrypt = findViewById(R.id.encrypt);
+        Button encrypt = findViewById(R.id.smallEncrypt);
 
         encrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

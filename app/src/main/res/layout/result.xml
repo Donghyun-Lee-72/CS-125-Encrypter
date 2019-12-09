@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/geoffbackground" >
 
+    // Text: key
+
     <Space
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="80dp" />
 
-    // Text: key
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -34,6 +35,10 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,6 +94,10 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -113,6 +122,10 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

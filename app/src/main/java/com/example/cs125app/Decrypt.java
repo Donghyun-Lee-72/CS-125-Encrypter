@@ -14,10 +14,10 @@ public class Decrypt extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.decrypter);
-
-        TextView keyNumber = findViewById(R.id.number);
-        String keyAsString = keyNumber.getText().toString();
-        int keyAsInt = Integer.parseInt(keyAsString);
+//
+//        TextView keyNumber = findViewById(R.id.number);
+//        String keyAsString = keyNumber.getText().toString();
+//        int keyAsInt = Integer.parseInt(keyAsString);
 
 
         decrypt = findViewById(R.id.smallEncrypt);

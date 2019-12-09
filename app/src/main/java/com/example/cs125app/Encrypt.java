@@ -15,10 +15,10 @@ public class Encrypt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.encrypter);
-
-        TextView keyNumber = findViewById(R.id.number);
-        String keyAsString = keyNumber.getText().toString();
-        int keyAsInt = Integer.parseInt(keyAsString);
+//
+//        TextView keyNumber = findViewById(R.id.number);
+//        String keyAsString = keyNumber.getText().toString();
+//        int keyAsInt = Integer.parseInt(keyAsString);
 
 
         Button encrypt = findViewById(R.id.smallEncrypt);

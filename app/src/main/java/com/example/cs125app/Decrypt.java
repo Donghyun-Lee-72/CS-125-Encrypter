@@ -44,6 +44,7 @@ public class Decrypt extends AppCompatActivity {
                 Intent intent = new Intent(Decrypt.this, ResultPage.class);
                 intent.putExtra("result", result);
                 intent.putExtra("mode", "decryption");
+                intent.putExtra("key", key);
 
                 startActivity(intent);
             }
@@ -55,6 +56,8 @@ public class Decrypt extends AppCompatActivity {
                 // get key and text
                 int keyOne = Integer.parseInt(keyInput.getText().toString()) / 100;
                 int keyTwo = Integer.parseInt(keyInput.getText().toString()) % 100;
+                int key = Integer.parseInt(keyInput.getText().toString());
+
                 String[] input = decryptInput.getText().toString().toLowerCase().split("");
                 // decrypt it using decrypt();
                 Map keyMap = decrypter(keyOne, keyTwo);
@@ -72,6 +75,7 @@ public class Decrypt extends AppCompatActivity {
                 Intent intent = new Intent(Decrypt.this, ResultPage.class);
                 intent.putExtra("result", result);
                 intent.putExtra("mode", "advancedDecryption");
+                intent.putExtra("key", key);
 
                 startActivity(intent);
             }

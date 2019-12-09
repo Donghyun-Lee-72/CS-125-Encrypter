@@ -45,6 +45,7 @@ public class ResultPage extends AppCompatActivity {
         resultOutput.setText(result);
 
         TextView keyOutput = findViewById(R.id.usedKey);
-
+        int key = getIntent().getIntExtra("key", 0);
+        keyOutput.setText(key);
     }
 }

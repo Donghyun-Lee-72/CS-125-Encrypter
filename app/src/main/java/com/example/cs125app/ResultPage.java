@@ -13,15 +13,6 @@ public class ResultPage extends AppCompatActivity {
         //The result page
         setContentView(R.layout.result);
 
-//        Text input to encrypt or Encrypted input to decrypt
-//        TextView inputBox = findViewById(R.id.text);
-//        final String textInput = inputBox.getText().toString();
-//
-//        //key used for decryption/encryption
-//        TextView key = findViewById(R.id.number);
-//        String keyAsString = key.getText().toString();
-//        final int keyAsInt = Integer.parseInt(keyAsString);
-//
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

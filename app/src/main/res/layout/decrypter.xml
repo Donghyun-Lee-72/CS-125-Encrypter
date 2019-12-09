@@ -96,16 +96,15 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/text"
+            android:id="@+id/decryptInput"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:background="@color/white"
+            android:gravity="top|left"
             android:inputType="text"
             android:maxLength="560"
-            android:textSize="8.5pt"
-            android:gravity="top|left"
-            />
+            android:textSize="8.5pt" />
 
         <Space
             android:layout_width="40dp"

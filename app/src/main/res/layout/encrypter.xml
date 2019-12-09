@@ -93,7 +93,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/text"
+            android:id="@+id/encryptInput"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"

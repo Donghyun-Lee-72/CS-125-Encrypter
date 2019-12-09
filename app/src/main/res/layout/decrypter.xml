@@ -101,10 +101,11 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:background="@color/white"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:maxLength="560"
             android:textSize="8.5pt"
             android:gravity="top|left"
+
             />
 
         <Space

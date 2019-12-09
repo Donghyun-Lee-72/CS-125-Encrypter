@@ -16,9 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Encrypt"></activity>
-        <activity android:name=".Decrypt"></activity>
-        <activity android:name=".ResultPage"></activity>
+        <activity android:name=".Encrypt">
+            <intent-filter >
+                <action android:name="com.example.dbtest2.k"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Decrypt">
+            <intent-filter >
+                <action android:name="com.example.dbtest2.k"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ResultPage">
+            <intent-filter >
+                <action android:name="com.example.dbtest2.k"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

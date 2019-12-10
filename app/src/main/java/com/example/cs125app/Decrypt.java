@@ -37,7 +37,9 @@ public class Decrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == null) {
+                    if (value == "null") {
+                        value = " ";
+                    } else if (value == null) {
                         WarningEnd();
                     }
 
@@ -68,7 +70,9 @@ public class Decrypt extends AppCompatActivity {
 
                 for (int o = 0; o < input.length; o += 2) {
                     String value = (String) keyMap.get(input[o] + input[o + 1]);
-                    if (value == null) {
+                    if (value == "null") {
+                        value = " ";
+                    } else if (value == null) {
                         WarningEnd();
                     }
 

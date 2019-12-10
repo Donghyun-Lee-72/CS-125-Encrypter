@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Encrypt.class));
-                finish();
             }
         });
 
@@ -30,32 +29,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Decrypt.class));
-                finish();
             }
         });
     }
-
-//    private void startEncrypt() {
-//        //turn to the results page and show the result
-//        Intent intent = new Intent(this, Encrypt.class);
-//        //make an intent of the other resultActivity
-//
-//    }
-//
-//    private String encryptText(String input, int key) {
-//        //encryption algorithm
-//        return "Hello, World!";
-//    }
-//    private void startDecrypt() {
-//        //turn to the results page and show the result
-//        Intent intent = new Intent(this, Encrypt.class);
-//        //make an intent of the other resultActivity
-//
-//    }
-//
-//    private String decryptText(String input, int key) {
-//        //decryption algorithm
-//        return "Hello, World!";
-//    }
 }
 

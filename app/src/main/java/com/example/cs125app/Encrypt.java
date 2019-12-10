@@ -30,10 +30,6 @@ public class Encrypt extends AppCompatActivity {
             public void onClick(View v) {
                 int key = Integer.parseInt(keyInput.getText().toString());
 
-                if (keyInput.getText().toString().length() != 4 || key < 0) {
-                    WarningEnd(1);
-                }
-
                 // get key and text
                 String[] input = encryptInput.getText().toString().toLowerCase().split("");
                 // encrypte it using encrypter();
@@ -42,8 +38,9 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
+                    System.out.println(value);
                     if (value == null) {
-                        WarningEnd(0);
+                        WarningEnd();
                     }
 
                     result += value;
@@ -55,7 +52,6 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("key", key);
 
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -66,10 +62,6 @@ public class Encrypt extends AppCompatActivity {
                 int keyOne = key / 100;
                 int keyTwo = key % 100;
 
-                if (keyInput.getText().toString().length() != 4 || key < 0) {
-                    WarningEnd(1);
-                }
-
                 String[] input = encryptInput.getText().toString().toLowerCase().split("");
                 // encrypte it using encrypter();
                 Map keyMap = encrypter(keyOne, keyTwo);
@@ -78,7 +70,7 @@ public class Encrypt extends AppCompatActivity {
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
                     if (value == null) {
-                        WarningEnd(0);
+                        WarningEnd();
                     }
 
                     result += value;
@@ -90,7 +82,6 @@ public class Encrypt extends AppCompatActivity {
                 intent.putExtra("key", key);
 
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -139,31 +130,17 @@ public class Encrypt extends AppCompatActivity {
         return result;
     }
 
-    private void WarningEnd(int type) {
-        if (type == 0) {
-            new AlertDialog.Builder(Encrypt.this)
-                    .setTitle("WARNING!")
-                    .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                            startActivity(goHome);
-                            finish();
-                        }
-                    });
-        } else if (type == 1) {
-            new AlertDialog.Builder(Encrypt.this)
-                    .setTitle("WARNING!")
-                    .setMessage("You should use 4-digit positive number")
-                    .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                            startActivity(goHome);
-                            finish();
-                        }
-                    });
-        }
+    private void WarningEnd() {
+        new AlertDialog.Builder(Encrypt.this)
+                .setTitle("WARNING!")
+                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                        startActivity(goHome);
+                        finish();
+                    }
+                });
     }
 }

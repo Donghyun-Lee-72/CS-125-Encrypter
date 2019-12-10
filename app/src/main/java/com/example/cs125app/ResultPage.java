@@ -19,7 +19,9 @@ public class ResultPage extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ResultPage.this, MainActivity.class));
+                Intent goHome = new Intent(ResultPage.this, MainActivity.class);
+                goHome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(goHome);
                 finish();
             }
         });
@@ -41,12 +43,12 @@ public class ResultPage extends AppCompatActivity {
         });
 
         //The result(ciphertext, decoded text) is shown
-//        TextView resultOutput = findViewById(R.id.result);
-//        String result = getIntent().getStringExtra("result");
-//        resultOutput.setText(result);
-//
-//        TextView keyOutput = findViewById(R.id.usedKey);
-//        int key = getIntent().getIntExtra("key", 0);
-//        keyOutput.setText(key);
+        TextView keyOutput = findViewById(R.id.usedKey);
+        int key = getIntent().getIntExtra("key", 0);
+        keyOutput.setText("" + key);
+
+        TextView resultOutput = findViewById(R.id.result);
+        String result = getIntent().getStringExtra("result");
+        resultOutput.setText(result);
     }
 }

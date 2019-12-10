@@ -37,9 +37,7 @@ public class Decrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == "null") {
-                        value = " ";
-                    } else if (value == null) {
+                    if (value == null) {
                         WarningEnd();
                     }
 
@@ -70,9 +68,7 @@ public class Decrypt extends AppCompatActivity {
 
                 for (int o = 0; o < input.length; o += 2) {
                     String value = (String) keyMap.get(input[o] + input[o + 1]);
-                    if (value == "null") {
-                        value = " ";
-                    } else if (value == null) {
+                    if (value == null) {
                         WarningEnd();
                     }
 
@@ -95,15 +91,15 @@ public class Decrypt extends AppCompatActivity {
         String[] numList = Arrays.numList;
         String[] puncList = Arrays.puncList;
         // english letter mapping
-        for (int j = 0; j < 26; j++) {
+        for (int j = 0; j < Numbers.numOfChar; j++) {
             result.put(charList[(key + j) % charList.length], charList[j]);
         }
         // number mapping
-        for (int k = 0; k < 10; k++) {
+        for (int k = 0; k < Numbers.numOfNum; k++) {
             result.put(numList[(key + k) % numList.length], numList[k]);
         }
         // punctuation mapping
-        for (int l = 0; l < 4; l++) {
+        for (int l = 0; l < Numbers.numOfPunc; l++) {
             result.put(puncList[(key + l) % puncList.length], puncList[l]);
         }
 
@@ -117,15 +113,15 @@ public class Decrypt extends AppCompatActivity {
         String[] puncList = Arrays.puncList;
 
         // english letter mapping
-        for (int j = 0; j < 26; j++) {
+        for (int j = 0; j < Numbers.numOfChar; j++) {
             result.put(charList[(key + j) % charList.length] + charList[(subkey + j) % charList.length], charList[j]);
         }
         // number mapping
-        for (int k = 0; k < 10; k++) {
+        for (int k = 0; k < Numbers.numOfNum; k++) {
             result.put(numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length], numList[k]);
         }
         // punctuation mapping
-        for (int l = 0; l < 4; l++) {
+        for (int l = 0; l < Numbers.numOfPunc; l++) {
             result.put(puncList[(key + l) % puncList.length] + puncList[(subkey + l) % puncList.length], puncList[l]);
         }
 
@@ -143,6 +139,6 @@ public class Decrypt extends AppCompatActivity {
                         startActivity(goHome);
                         finish();
                     }
-                });
+                }).show();
     }
 }

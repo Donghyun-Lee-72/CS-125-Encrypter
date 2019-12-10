@@ -39,9 +39,7 @@ public class Encrypt extends AppCompatActivity {
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
                     System.out.println(value);
-                    if (value == "null") {
-                        value = " ";
-                    } else if (value == null) {
+                    if (value == null) {
                         WarningEnd();
                     }
 
@@ -71,9 +69,7 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    if (value == "null") {
-                        value = " ";
-                    } else if (value == null) {
+                    if (value == null) {
                         WarningEnd();
                     }
 
@@ -119,15 +115,15 @@ public class Encrypt extends AppCompatActivity {
         String[] puncList = Arrays.puncList;
 
         // english letter mapping
-        for (int j = 0; j < 26; j++) {
+        for (int j = 0; j < Numbers.numOfChar; j++) {
             result.put(charList[j], charList[(key + j) % charList.length] + charList[(subkey + j) % charList.length]);
         }
         // number mapping
-        for (int k = 0; k < 10; k++) {
+        for (int k = 0; k < Numbers.numOfNum; k++) {
             result.put(numList[k], numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length]);
         }
         // punctuation mapping
-        for (int l = 0; l < 4; l++) {
+        for (int l = 0; l < Numbers.numOfPunc; l++) {
             result.put(puncList[l], puncList[(key + l) % puncList.length] + puncList[(subkey + l) % puncList.length]);
         }
 
@@ -145,6 +141,7 @@ public class Encrypt extends AppCompatActivity {
                         startActivity(goHome);
                         finish();
                     }
-                });
+                }).show();
+
     }
 }

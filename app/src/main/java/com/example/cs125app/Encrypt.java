@@ -38,7 +38,6 @@ public class Encrypt extends AppCompatActivity {
 
                 for (String letter : input) {
                     String value = (String) keyMap.get(letter);
-                    System.out.println(value);
                     if (value == null) {
                         WarningEnd();
                     }

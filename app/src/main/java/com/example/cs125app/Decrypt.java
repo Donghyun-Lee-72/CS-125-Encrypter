@@ -31,14 +31,13 @@ public class Decrypt extends AppCompatActivity {
                     // get key and text
                     int key = Integer.parseInt(keyInput.getText().toString());
 
-                    String[] input = decryptInput.getText().toString().toLowerCase().split("");
+                    char[] input = decryptInput.getText().toString().toLowerCase().toCharArray();
                     // decrypt it using decrypt();
                     Map keyMap = decrypter(key);
                     String result = "";
 
-                    for (String letter : input) {
-                        String value = (String) keyMap.get(letter);
-                        System.out.println("value: " + value);
+                    for (char letter : input) {
+                        String value = (String) keyMap.get(String.valueOf(letter));
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }
@@ -69,13 +68,15 @@ public class Decrypt extends AppCompatActivity {
                     int keyOne = key / 100;
                     int keyTwo = key % 100;
 
-                    String[] input = decryptInput.getText().toString().toLowerCase().split("");
+                    char[] input = decryptInput.getText().toString().toLowerCase().toCharArray();
                     // decrypt it using decrypt();
                     Map keyMap = decrypter(keyOne, keyTwo);
                     String result = "";
 
                     for (int o = 0; o < input.length; o += 2) {
                         String value = (String) keyMap.get(input[o] + input[o + 1]);
+                        System.out.println("letter:" + input[o] + "," + input[o + 1] + ".");
+                        System.out.println("value:" + value + ".");
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }
@@ -92,7 +93,7 @@ public class Decrypt extends AppCompatActivity {
                 } catch (NumberFormatException e) {
                     WarningEnd(2);
                 } catch (IllegalArgumentException e) {
-                    WarningEnd(1);
+                    WarningEnd(3);
                 }
             }
         });
@@ -131,7 +132,7 @@ public class Decrypt extends AppCompatActivity {
         }
         // number mapping
         for (int k = 0; k < Numbers.numOfNum; k++) {
-            result.put(numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length], numList[k]);
+            result.put(numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length], numList[k]);
         }
         // punctuation mapping
         for (int l = 0; l < Numbers.numOfPunc; l++) {
@@ -146,7 +147,7 @@ public class Decrypt extends AppCompatActivity {
             case 1 :        // wrong letters
                 new AlertDialog.Builder(Decrypt.this)
                         .setTitle("WARNING!")
-                        .setMessage("You should use English letters, arabic numbers, and punctuations")
+                        .setMessage("You should use English letters, arabic numbers, and punctuations.")
                         .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -166,6 +167,17 @@ public class Decrypt extends AppCompatActivity {
                             }
                         }).show();
 
+                break;
+            case 3 :        // wrong letters
+                new AlertDialog.Builder(Decrypt.this)
+                        .setTitle("WARNING!")
+                        .setMessage("You should use English letters, arabic numbers, and punctuations.\nOr use the correct key code!")
+                        .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        }).show();
                 break;
         }
     }

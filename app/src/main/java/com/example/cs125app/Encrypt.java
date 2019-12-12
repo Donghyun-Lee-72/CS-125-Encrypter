@@ -33,13 +33,13 @@ public class Encrypt extends AppCompatActivity {
                     int key = Integer.parseInt(keyInput.getText().toString());
 
                     // get key and text
-                    String[] input = encryptInput.getText().toString().toLowerCase().split("");
+                    char[] input = encryptInput.getText().toString().toLowerCase().toCharArray();
                     // encrypte it using encrypter();
                     Map keyMap = encrypter(key);
                     String result = "";
 
-                    for (String letter : input) {
-                        String value = (String) keyMap.get(letter);
+                    for (char letter : input) {
+                        String value = (String) keyMap.get(String.valueOf(letter));
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }
@@ -70,13 +70,13 @@ public class Encrypt extends AppCompatActivity {
                     int keyOne = key / 100;
                     int keyTwo = key % 100;
 
-                    String[] input = encryptInput.getText().toString().toLowerCase().split("");
+                    char[] input = encryptInput.getText().toString().toLowerCase().toCharArray();
                     // encrypte it using encrypter();
                     Map keyMap = encrypter(keyOne, keyTwo);
                     String result = "";
 
-                    for (String letter : input) {
-                        String value = (String) keyMap.get(letter);
+                    for (char letter : input) {
+                        String value = (String) keyMap.get(String.valueOf(letter));
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }
@@ -94,6 +94,8 @@ public class Encrypt extends AppCompatActivity {
                     WarningEnd(2);
                 } catch (IllegalArgumentException e) {
                     WarningEnd(1);
+                } catch (Error e) {
+                    System.out.println("error: " + e);
                 }
             }
         });
@@ -133,7 +135,7 @@ public class Encrypt extends AppCompatActivity {
         }
         // number mapping
         for (int k = 0; k < Numbers.numOfNum; k++) {
-            result.put(numList[k], numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length]);
+            result.put(numList[k], numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length]);
         }
         // punctuation mapping
         for (int l = 0; l < Numbers.numOfPunc; l++) {

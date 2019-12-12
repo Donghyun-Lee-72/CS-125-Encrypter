@@ -39,7 +39,7 @@ public class Decrypt extends AppCompatActivity {
                     for (String letter : input) {
                         String value = (String) keyMap.get(letter);
                         if (value == null) {
-                            WarningEnd(1);
+                            throw new IllegalArgumentException();
                         }
 
                         result += value;
@@ -53,6 +53,8 @@ public class Decrypt extends AppCompatActivity {
                     startActivity(intent);
                 } catch (NumberFormatException e) {
                     WarningEnd(2);
+                } catch (IllegalArgumentException e) {
+                    WarningEnd(1);
                 }
             }
         });
@@ -74,7 +76,7 @@ public class Decrypt extends AppCompatActivity {
                     for (int o = 0; o < input.length; o += 2) {
                         String value = (String) keyMap.get(input[o] + input[o + 1]);
                         if (value == null) {
-                            WarningEnd(1);
+                            throw new IllegalArgumentException();
                         }
 
                         result += value;
@@ -88,6 +90,8 @@ public class Decrypt extends AppCompatActivity {
                     startActivity(intent);
                 } catch (NumberFormatException e) {
                     WarningEnd(2);
+                } catch (IllegalArgumentException e) {
+                    WarningEnd(1);
                 }
             }
         });
@@ -141,13 +145,11 @@ public class Decrypt extends AppCompatActivity {
             case 1 :        // wrong letters
                 new AlertDialog.Builder(Decrypt.this)
                         .setTitle("WARNING!")
-                        .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        .setMessage("You should use English letters, arabic numbers, and punctuations")
+                        .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent goHome = new Intent(Decrypt.this, MainActivity.class);
-                                startActivity(goHome);
-                                finish();
+                                dialogInterface.dismiss();
                             }
                         }).show();
                 break;
@@ -156,17 +158,14 @@ public class Decrypt extends AppCompatActivity {
                 new AlertDialog.Builder(Decrypt.this)
                         .setTitle("WARNING!")
                         .setMessage("You should insert a key code of 1-4 digit positive number")
-                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent goHome = new Intent(Decrypt.this, MainActivity.class);
-                                startActivity(goHome);
-                                finish();
+                                dialogInterface.dismiss();
                             }
                         }).show();
+
                 break;
         }
-
-        finish();
     }
 }

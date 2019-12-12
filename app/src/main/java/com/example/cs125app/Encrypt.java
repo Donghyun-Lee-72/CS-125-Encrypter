@@ -41,7 +41,7 @@ public class Encrypt extends AppCompatActivity {
                     for (String letter : input) {
                         String value = (String) keyMap.get(letter);
                         if (value == null) {
-                            WarningEnd(1);
+                            throw new IllegalArgumentException();
                         }
 
                         result += value;
@@ -56,6 +56,8 @@ public class Encrypt extends AppCompatActivity {
 
                 } catch (NumberFormatException e) {
                     WarningEnd(2);
+                } catch (IllegalArgumentException e) {
+                    WarningEnd(1);
                 }
             }
         });
@@ -76,7 +78,7 @@ public class Encrypt extends AppCompatActivity {
                     for (String letter : input) {
                         String value = (String) keyMap.get(letter);
                         if (value == null) {
-                            WarningEnd(1);
+                            throw new IllegalArgumentException();
                         }
 
                         result += value;
@@ -90,6 +92,8 @@ public class Encrypt extends AppCompatActivity {
                     startActivity(intent);
                 } catch (NumberFormatException e) {
                     WarningEnd(2);
+                } catch (IllegalArgumentException e) {
+                    WarningEnd(1);
                 }
             }
         });
@@ -144,13 +148,11 @@ public class Encrypt extends AppCompatActivity {
             case 1 :        // wrong letters
                 new AlertDialog.Builder(Encrypt.this)
                         .setTitle("WARNING!")
-                        .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        .setMessage("You should use English letters, arabic numbers, and punctuations")
+                        .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                            startActivity(goHome);
-                            finish();
+                            dialogInterface.dismiss();
                         }
                     }).show();
                 break;
@@ -159,17 +161,14 @@ public class Encrypt extends AppCompatActivity {
                 new AlertDialog.Builder(Encrypt.this)
                         .setTitle("WARNING!")
                         .setMessage("You should insert a key code of 1-4 digit positive number")
-                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                                startActivity(goHome);
-                                finish();
+                                dialogInterface.dismiss();
                             }
                         }).show();
+
                 break;
         }
-
-        finish();
     }
 }

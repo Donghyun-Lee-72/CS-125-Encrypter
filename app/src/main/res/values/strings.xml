@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">cs125app</string>
+    <string name="app_name">Encrypter 125</string>
     <string name="key">Key code</string>
     <string name="input">input</string>
     <string name="output">This is the used key.</string>

@@ -38,6 +38,7 @@ public class Decrypt extends AppCompatActivity {
 
                     for (String letter : input) {
                         String value = (String) keyMap.get(letter);
+                        System.out.println("value: " + value);
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }

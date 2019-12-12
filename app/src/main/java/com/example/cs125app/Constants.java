@@ -9,5 +9,5 @@ class Arrays {
 class Numbers {
     static final int numOfChar = 28;
     static final int numOfNum = 10;
-    static final int numOfPunc = 32;
+    static final int numOfPunc = 31;
 }

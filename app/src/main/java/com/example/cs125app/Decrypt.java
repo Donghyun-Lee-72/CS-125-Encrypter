@@ -120,6 +120,28 @@ public class Decrypt extends AppCompatActivity {
         return result;
     }
 
+//    private Map decrypter(int key, int subkey) {
+//        Map result = new HashMap();
+//        String[] charList = Arrays.charList;
+//        String[] numList = Arrays.numList;
+//        String[] puncList = Arrays.puncList;
+//
+//        // english letter mapping
+//        for (int j = 0; j < Numbers.numOfChar; j++) {
+//            result.put(charList[(key + j) % charList.length] + charList[(subkey + j) % charList.length], charList[j]);
+//        }
+//        // number mapping
+//        for (int k = 0; k < Numbers.numOfNum; k++) {
+//            result.put(numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length], numList[k]);
+//        }
+//        // punctuation mapping
+//        for (int l = 0; l < Numbers.numOfPunc; l++) {
+//            result.put(puncList[(key + l) % puncList.length] + puncList[(subkey + l) % puncList.length], puncList[l]);
+//        }
+//
+//        return result;
+//    }
+
     private Map decrypter(int key, int subkey) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
@@ -132,7 +154,7 @@ public class Decrypt extends AppCompatActivity {
         }
         // number mapping
         for (int k = 0; k < Numbers.numOfNum; k++) {
-            result.put(numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length], numList[k]);
+            result.put(numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length], numList[k]);
         }
         // punctuation mapping
         for (int l = 0; l < Numbers.numOfPunc; l++) {

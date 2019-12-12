@@ -123,6 +123,28 @@ public class Encrypt extends AppCompatActivity {
         return result;
     }
 
+//    private Map encrypter(int key, int subkey) {
+//        Map result = new HashMap();
+//        String[] charList = Arrays.charList;
+//        String[] numList = Arrays.numList;
+//        String[] puncList = Arrays.puncList;
+//
+//        // english letter mapping
+//        for (int j = 0; j < Numbers.numOfChar; j++) {
+//            result.put(charList[j], charList[(key + j) % charList.length] + charList[(subkey + j) % charList.length]);
+//        }
+//        // number mapping
+//        for (int k = 0; k < Numbers.numOfNum; k++) {
+//            result.put(numList[k], numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length]);
+//        }
+//        // punctuation mapping
+//        for (int l = 0; l < Numbers.numOfPunc; l++) {
+//            result.put(puncList[l], puncList[(key + l) % puncList.length] + puncList[(subkey + l) % puncList.length]);
+//        }
+//
+//        return result;
+//    }
+
     private Map encrypter(int key, int subkey) {
         Map result = new HashMap();
         String[] charList = Arrays.charList;
@@ -135,7 +157,7 @@ public class Encrypt extends AppCompatActivity {
         }
         // number mapping
         for (int k = 0; k < Numbers.numOfNum; k++) {
-            result.put(numList[k], numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length]);
+            result.put(numList[k], numList[(key + k) % numList.length] + charList[(subkey + k) % charList.length]);
         }
         // punctuation mapping
         for (int l = 0; l < Numbers.numOfPunc; l++) {

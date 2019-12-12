@@ -27,60 +27,68 @@ public class Decrypt extends AppCompatActivity {
         smallDecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get key and text
-                int key = Integer.parseInt(keyInput.getText().toString());
+                try {
+                    // get key and text
+                    int key = Integer.parseInt(keyInput.getText().toString());
 
-                String[] input = decryptInput.getText().toString().toLowerCase().split("");
-                // decrypt it using decrypt();
-                Map keyMap = decrypter(key);
-                String result = "";
+                    String[] input = decryptInput.getText().toString().toLowerCase().split("");
+                    // decrypt it using decrypt();
+                    Map keyMap = decrypter(key);
+                    String result = "";
 
-                for (String letter : input) {
-                    String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        WarningEnd();
+                    for (String letter : input) {
+                        String value = (String) keyMap.get(letter);
+                        if (value == null) {
+                            WarningEnd(1);
+                        }
+
+                        result += value;
                     }
 
-                    result += value;
+                    Intent intent = new Intent(Decrypt.this, ResultPage.class);
+                    intent.putExtra("result", result);
+                    intent.putExtra("mode", "decryption");
+                    intent.putExtra("key", key);
+
+                    startActivity(intent);
+                } catch (NumberFormatException e) {
+                    WarningEnd(2);
                 }
-
-                Intent intent = new Intent(Decrypt.this, ResultPage.class);
-                intent.putExtra("result", result);
-                intent.putExtra("mode", "decryption");
-                intent.putExtra("key", key);
-
-                startActivity(intent);
             }
         });
 
         safeDecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // get key and text
-                int key = Integer.parseInt(keyInput.getText().toString());
-                int keyOne = key / 100;
-                int keyTwo = key % 100;
+                try {
+                    // get key and text
+                    int key = Integer.parseInt(keyInput.getText().toString());
+                    int keyOne = key / 100;
+                    int keyTwo = key % 100;
 
-                String[] input = decryptInput.getText().toString().toLowerCase().split("");
-                // decrypt it using decrypt();
-                Map keyMap = decrypter(keyOne, keyTwo);
-                String result = "";
+                    String[] input = decryptInput.getText().toString().toLowerCase().split("");
+                    // decrypt it using decrypt();
+                    Map keyMap = decrypter(keyOne, keyTwo);
+                    String result = "";
 
-                for (int o = 0; o < input.length; o += 2) {
-                    String value = (String) keyMap.get(input[o] + input[o + 1]);
-                    if (value == null) {
-                        WarningEnd();
+                    for (int o = 0; o < input.length; o += 2) {
+                        String value = (String) keyMap.get(input[o] + input[o + 1]);
+                        if (value == null) {
+                            WarningEnd(1);
+                        }
+
+                        result += value;
                     }
 
-                    result += value;
+                    Intent intent = new Intent(Decrypt.this, ResultPage.class);
+                    intent.putExtra("result", result);
+                    intent.putExtra("mode", "advancedDecryption");
+                    intent.putExtra("key", key);
+
+                    startActivity(intent);
+                } catch (NumberFormatException e) {
+                    WarningEnd(2);
                 }
-
-                Intent intent = new Intent(Decrypt.this, ResultPage.class);
-                intent.putExtra("result", result);
-                intent.putExtra("mode", "advancedDecryption");
-                intent.putExtra("key", key);
-
-                startActivity(intent);
             }
         });
     }
@@ -128,17 +136,37 @@ public class Decrypt extends AppCompatActivity {
         return result;
     }
 
-    private void WarningEnd() {
-        new AlertDialog.Builder(Decrypt.this)
-                .setTitle("WARNING!")
-                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent goHome = new Intent(Decrypt.this, MainActivity.class);
-                        startActivity(goHome);
-                        finish();
-                    }
-                }).show();
+    private void WarningEnd(int type) {
+        switch(type) {
+            case 1 :        // wrong letters
+                new AlertDialog.Builder(Decrypt.this)
+                        .setTitle("WARNING!")
+                        .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                                startActivity(goHome);
+                                finish();
+                            }
+                        }).show();
+                break;
+
+            case 2 :        // no key input
+                new AlertDialog.Builder(Decrypt.this)
+                        .setTitle("WARNING!")
+                        .setMessage("You should insert a key code of 1-4 digit positive number")
+                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent goHome = new Intent(Decrypt.this, MainActivity.class);
+                                startActivity(goHome);
+                                finish();
+                            }
+                        }).show();
+                break;
+        }
+
+        finish();
     }
 }

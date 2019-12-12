@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
@@ -28,59 +29,68 @@ public class Encrypt extends AppCompatActivity {
         smallEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int key = Integer.parseInt(keyInput.getText().toString());
+                try {
+                    int key = Integer.parseInt(keyInput.getText().toString());
 
-                // get key and text
-                String[] input = encryptInput.getText().toString().toLowerCase().split("");
-                // encrypte it using encrypter();
-                Map keyMap = encrypter(key);
-                String result = "";
+                    // get key and text
+                    String[] input = encryptInput.getText().toString().toLowerCase().split("");
+                    // encrypte it using encrypter();
+                    Map keyMap = encrypter(key);
+                    String result = "";
 
-                for (String letter : input) {
-                    String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        WarningEnd();
+                    for (String letter : input) {
+                        String value = (String) keyMap.get(letter);
+                        if (value == null) {
+                            WarningEnd(1);
+                        }
+
+                        result += value;
                     }
 
-                    result += value;
+                    Intent intent = new Intent(Encrypt.this, ResultPage.class);
+                    intent.putExtra("result", result);
+                    intent.putExtra("mode", "encryption");
+                    intent.putExtra("key", key);
+
+                    startActivity(intent);
+
+                } catch (NumberFormatException e) {
+                    WarningEnd(2);
                 }
-
-                Intent intent = new Intent(Encrypt.this, ResultPage.class);
-                intent.putExtra("result", result);
-                intent.putExtra("mode", "encryption");
-                intent.putExtra("key", key);
-
-                startActivity(intent);
             }
         });
 
         safeEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int key = Integer.parseInt(keyInput.getText().toString());
-                int keyOne = key / 100;
-                int keyTwo = key % 100;
+                try {
+                    int key = Integer.parseInt(keyInput.getText().toString());
+                    int keyOne = key / 100;
+                    int keyTwo = key % 100;
 
-                String[] input = encryptInput.getText().toString().toLowerCase().split("");
-                // encrypte it using encrypter();
-                Map keyMap = encrypter(keyOne, keyTwo);
-                String result = "";
+                    String[] input = encryptInput.getText().toString().toLowerCase().split("");
+                    // encrypte it using encrypter();
+                    Map keyMap = encrypter(keyOne, keyTwo);
+                    String result = "";
 
-                for (String letter : input) {
-                    String value = (String) keyMap.get(letter);
-                    if (value == null) {
-                        WarningEnd();
+                    for (String letter : input) {
+                        String value = (String) keyMap.get(letter);
+                        if (value == null) {
+                            WarningEnd(1);
+                        }
+
+                        result += value;
                     }
 
-                    result += value;
+                    Intent intent = new Intent(Encrypt.this, ResultPage.class);
+                    intent.putExtra("result", result);
+                    intent.putExtra("mode", "advancedEncryption");
+                    intent.putExtra("key", key);
+
+                    startActivity(intent);
+                } catch (NumberFormatException e) {
+                    WarningEnd(2);
                 }
-
-                Intent intent = new Intent(Encrypt.this, ResultPage.class);
-                intent.putExtra("result", result);
-                intent.putExtra("mode", "advancedEncryption");
-                intent.putExtra("key", key);
-
-                startActivity(intent);
             }
         });
     }
@@ -129,18 +139,37 @@ public class Encrypt extends AppCompatActivity {
         return result;
     }
 
-    private void WarningEnd() {
-        new AlertDialog.Builder(Encrypt.this)
-                .setTitle("WARNING!")
-                .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
-                .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent goHome = new Intent(Encrypt.this, MainActivity.class);
-                        startActivity(goHome);
-                        finish();
-                    }
-                }).show();
+    private void WarningEnd(int type) {
+        switch(type) {
+            case 1 :        // wrong letters
+                new AlertDialog.Builder(Encrypt.this)
+                        .setTitle("WARNING!")
+                        .setMessage("You should use English letters, arabic numbers, and designated punctuation(! ? , .)")
+                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                            startActivity(goHome);
+                            finish();
+                        }
+                    }).show();
+                break;
 
+            case 2 :        // no key input
+                new AlertDialog.Builder(Encrypt.this)
+                        .setTitle("WARNING!")
+                        .setMessage("You should insert a key code of 1-4 digit positive number")
+                        .setPositiveButton("Go Home", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent goHome = new Intent(Encrypt.this, MainActivity.class);
+                                startActivity(goHome);
+                                finish();
+                            }
+                        }).show();
+                break;
+        }
+
+        finish();
     }
 }

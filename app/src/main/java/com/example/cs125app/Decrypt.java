@@ -74,9 +74,7 @@ public class Decrypt extends AppCompatActivity {
                     String result = "";
 
                     for (int o = 0; o < input.length; o += 2) {
-                        String value = (String) keyMap.get(input[o] + input[o + 1]);
-                        System.out.println("letter:" + input[o] + "," + input[o + 1] + ".");
-                        System.out.println("value:" + value + ".");
+                        String value = String.valueOf(keyMap.get("" + input[o] + input[o + 1]));
                         if (value == null) {
                             throw new IllegalArgumentException();
                         }
@@ -119,28 +117,6 @@ public class Decrypt extends AppCompatActivity {
 
         return result;
     }
-
-//    private Map decrypter(int key, int subkey) {
-//        Map result = new HashMap();
-//        String[] charList = Arrays.charList;
-//        String[] numList = Arrays.numList;
-//        String[] puncList = Arrays.puncList;
-//
-//        // english letter mapping
-//        for (int j = 0; j < Numbers.numOfChar; j++) {
-//            result.put(charList[(key + j) % charList.length] + charList[(subkey + j) % charList.length], charList[j]);
-//        }
-//        // number mapping
-//        for (int k = 0; k < Numbers.numOfNum; k++) {
-//            result.put(numList[(key + k) % numList.length] + numList[(subkey + k) % numList.length], numList[k]);
-//        }
-//        // punctuation mapping
-//        for (int l = 0; l < Numbers.numOfPunc; l++) {
-//            result.put(puncList[(key + l) % puncList.length] + puncList[(subkey + l) % puncList.length], puncList[l]);
-//        }
-//
-//        return result;
-//    }
 
     private Map decrypter(int key, int subkey) {
         Map result = new HashMap();
